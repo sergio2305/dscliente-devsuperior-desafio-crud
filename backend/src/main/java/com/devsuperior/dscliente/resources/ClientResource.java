@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.devsuperior.dscliente.dto.ClientDTO;
 import com.devsuperior.dscliente.services.ClientService;
+import com.devsuperior.dscliente.services.exceptions.EntityNotFoundException;
 
 @RestController
 @RequestMapping(value = "/clients")
@@ -27,7 +28,8 @@ public class ClientResource {
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<ClientDTO> findById(@PathVariable Long id) {
+		
 		ClientDTO dto = service.findById(id); 
-		return ResponseEntity.ok().body(dto);
+ 		return ResponseEntity.ok().body(dto);
 	}
 }
